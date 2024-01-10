@@ -1,0 +1,29 @@
+<html>
+<style>
+.box{
+  float:left;
+  border:solid 1px;
+  width:100px;height:100px;
+  margin:20px;
+}
+</style>
+
+<script>
+function wheelme(d){
+	d.addEventListener("wheel", (e) => {
+		step = 5;
+		change = e.deltaY < 0 ? 1 : -1;
+		d.style.width = Math.max(50, d.clientWidth + change*step);
+		d.style.height = Math.max(50, d.clientHeight + change*step);
+		e.preventDefault();
+	});
+}
+</script>
+
+<body>
+<div class="box" onmouseover="wheelme(this);"></div>
+<div class="box" onmouseover="wheelme(this);"></div>
+<div class="clear"></div>
+
+</body>
+</html>
