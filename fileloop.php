@@ -17,7 +17,7 @@ while(!feof($fh)) {
 			echo "$capcount\n";
 			$capcount = 0;
 		}
-		elseif (mb_strtolower($ch) != $ch)
+		elseif (mb_strtolower($ch, "UTF-8") != $ch)
 			$capcount++;
 	}
 	//echo $data;
