@@ -6,7 +6,7 @@ $query="select persons.personid,fname,lname, phone from persons left join phones
 $rs=sql_prep($query,$db);
 
 while ($myrow=sql_fetch_assoc($rs)) {
-    $personid=$myrow['personid'];
+	$personid=$myrow['personid'];
 	$fname=$myrow['fname'];
 	$lname=$myrow['lname'];
 	$phone=$myrow['phone'];
