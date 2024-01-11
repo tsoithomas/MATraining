@@ -1,27 +1,15 @@
 <?php
 
 if ($argc != 2)
-	die("Incorrect number of arguments.");
+	die("Incorrect number of arguments.\n");
 
 $path = $argv[1];
 
-$fh = fopen($path, "r") or die("Unable to open file!");
+$fh = fopen($path, "r") or die("Incorrect file name.\n");
 
-
-$capcount = 0;
-while(!feof($fh)) {
-	$data = fread($fh, 8192);
-	for ($i=0; $i<strlen($data); $i++) {
-		$ch = $data[$i];
-		if ($ch == "\n") {
-			echo "$capcount\n";
-			$capcount = 0;
-		}
-		elseif (mb_strtolower($ch, "UTF-8") != $ch)
-			$capcount++;
-	}
-	//echo $data;
+while (($line = fgets($fh)) !== false) {
+	$uppercaseCount = preg_match_all('/\p{Lu}/u', $line);
+	echo $uppercaseCount . "\n";
 }
-
 
 fclose($fh);
